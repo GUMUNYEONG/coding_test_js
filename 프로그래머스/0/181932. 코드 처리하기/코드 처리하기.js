@@ -1,20 +1,4 @@
 function solution(code) {
-    var answer = '';
-    let ret = '';
-    let mode = 0;
-    let codeArr = [...code];
-    
-    codeArr.forEach((v,k)=>{
-        if(v === "1"){
-            mode = !mode;
-        }else{
-            if(mode && k%2) ret += v;
-            if(!mode && !(k%2)) ret += v;
-        }
-    });
-    
-    answer = ret === '' ? 'EMPTY' : ret;
-    
-    
-    return answer;
+    var answer = [...code.replaceAll("1", "")].filter((val, idx) => idx % 2 === 0).join("");
+    return answer.length > 0 ? answer : "EMPTY";
 }
